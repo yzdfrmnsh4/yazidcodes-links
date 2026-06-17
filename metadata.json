@@ -1,0 +1,6 @@
+{
+  "name": "macOS Tahoe Link Bio",
+  "description": "An interactive macOS Tahoe & iOS 26 style liquid-glass desktop experience showcasing personal social links, bio portfolio, and interactive system widgets.",
+  "requestFramePermissions": ["geolocation", "camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

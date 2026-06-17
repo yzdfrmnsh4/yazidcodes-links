@@ -1,0 +1,12 @@
+Halo!
+
+Untuk memainkan file musik (MP3) Anda sendiri pada widget musik & Spotify Player di website ini:
+
+1. Buat file MP3 apa saja yang ingin Anda mainkan.
+2. Namai file tersebut sebagai: music.mp3
+3. Simpan/upload file tersebut secara langsung ke dalam folder: /public/
+4. Secara penuh nama path filenya di workspace Anda adalah: /public/music.mp3
+5. Setelah itu, musik Anda akan secara otomatis ter-load saat website dijalankan!
+
+Anda juga bisa menambahkan file musik lainnya dengan memperbarui konfigurasi tracks di file:
+`/src/context/AudioContext.tsx`
