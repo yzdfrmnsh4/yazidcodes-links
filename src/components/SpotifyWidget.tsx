@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ImageWithSkeleton } from './ImageWithSkeleton';
 import {
   Play,
   Pause,
@@ -102,7 +103,7 @@ export const SpotifyWidget: React.FC = () => {
               className="relative w-44 h-44 sm:w-48 sm:h-48 rounded-2xl overflow-hidden shadow-[0_20px_45px_rgba(0,0,0,0.6)] border border-white/10 shrink-0 cursor-pointer group active:scale-95 transition-all duration-300"
               title="Klik gambar untuk mengecilkan widget"
             >
-              <img
+              <ImageWithSkeleton
                 src={currentTrack.coverUrl}
                 alt={currentTrack.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -246,7 +247,7 @@ export const SpotifyWidget: React.FC = () => {
                 className="relative w-11 h-11 rounded-lg overflow-hidden border border-white/10 shrink-0 group cursor-pointer active:scale-90 transition-all duration-300"
                 title="Klik gambar untuk memperbesar"
               >
-                <img
+                <ImageWithSkeleton
                   src={currentTrack.coverUrl}
                   alt={currentTrack.title}
                   className="w-full h-full object-cover"

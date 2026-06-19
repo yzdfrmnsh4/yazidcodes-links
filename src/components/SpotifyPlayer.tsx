@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { ImageWithSkeleton } from './ImageWithSkeleton';
 import { 
   Play, 
   Pause, 
@@ -60,7 +61,7 @@ export const SpotifyPlayer: React.FC = () => {
         
         {/* Album Cover Art */}
         <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-xl overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.5)] border border-white/20 shrink-0 group">
-          <img
+          <ImageWithSkeleton
             src={currentTrack.coverUrl}
             alt={currentTrack.title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

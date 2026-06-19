@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ZoomIn, ChevronLeft, ChevronRight, Map, Heart, Share2 } from 'lucide-react';
+import { ImageWithSkeleton } from './ImageWithSkeleton';
 
 interface Photo {
   id: number;
@@ -55,7 +56,7 @@ export const PhotoGallery: React.FC = () => {
     <div className="flex flex-col h-full font-sans select-none text-slate-100">
       {/* Lightbox / Large Image viewer */}
       <div className="relative w-full h-52 sm:h-64 rounded-2xl overflow-hidden border border-white/10 group bg-black/80">
-        <img
+        <ImageWithSkeleton
           src={activePhoto.url}
           alt={activePhoto.title}
           referrerPolicy="no-referrer"
@@ -117,7 +118,7 @@ export const PhotoGallery: React.FC = () => {
                   : 'border-white/10 hover:border-white/20 hover:scale-[1.02]'
               }`}
             >
-              <img
+              <ImageWithSkeleton
                 src={item.url}
                 alt={item.title}
                 referrerPolicy="no-referrer"

@@ -1,4 +1,6 @@
-import React, { useEffect, useRef, useCallback, useMemo } from 'react';
+import React, { useEffect, useRef, useCallback, useMemo, useState } from 'react';
+import { ImageWithSkeleton } from './ImageWithSkeleton';
+import { Skeleton } from './Skeleton';
 
 const DEFAULT_INNER_GRADIENT = 'linear-gradient(145deg, #1e293b 0%, #0f172a 100%)';
 
@@ -81,6 +83,7 @@ avatarUrl = '/yazid.png', // Set to empty string for customizable default
   showUserInfo = true,
   onContactClick
 }) => {
+  const [avatarLoaded, setAvatarLoaded] = useState(false);
   const wrapRef = useRef<HTMLDivElement>(null);
   const shellRef = useRef<HTMLDivElement>(null);
 
@@ -517,23 +520,34 @@ avatarUrl = '/yazid.png', // Set to empty string for customizable default
               }}
             >
               {avatarUrl && (
-                <img
-                  className="w-full absolute left-1/2 bottom-[-1px] will-change-transform transition-transform duration-[120ms] ease-out"
-                  src={avatarUrl}
-                  alt={`${name || 'User'} avatar`}
-                  loading="lazy"
-                  style={{
-                    transformOrigin: '50% 100%',
-                    transform:
-                      'translateX(calc(-50% + (var(--pointer-from-left) - 0.5) * 6px)) translateZ(0) scaleY(calc(1 + (var(--pointer-from-top) - 0.5) * 0.02)) scaleX(calc(1 + (var(--pointer-from-left) - 0.5) * 0.01))',
-                    borderRadius: cardRadius,
-                    backfaceVisibility: 'hidden'
-                  }}
-                  onError={e => {
-                    const t = e.target as HTMLImageElement;
-                    t.style.display = 'none';
-                  }}
-                />
+                <>
+                  {!avatarLoaded && (
+                    <Skeleton
+                      variant="rectangular"
+                      className="absolute inset-0 w-full h-full z-10"
+                    />
+                  )}
+                  <img
+                    className="w-full absolute left-1/2 bottom-[-1px] will-change-transform transition-transform duration-[120ms] ease-out"
+                    src={avatarUrl}
+                    alt={`${name || 'User'} avatar`}
+                    loading="lazy"
+                    onLoad={() => setAvatarLoaded(true)}
+                    style={{
+                      transformOrigin: '50% 100%',
+                      transform:
+                        'translateX(calc(-50% + (var(--pointer-from-left) - 0.5) * 6px)) translateZ(0) scaleY(calc(1 + (var(--pointer-from-top) - 0.5) * 0.02)) scaleX(calc(1 + (var(--pointer-from-left) - 0.5) * 0.01))',
+                      borderRadius: cardRadius,
+                      backfaceVisibility: 'hidden',
+                      opacity: avatarLoaded ? 1 : 0,
+                      transition: 'opacity 0.5s ease-out'
+                    }}
+                    onError={e => {
+                      const t = e.target as HTMLImageElement;
+                      t.style.display = 'none';
+                    }}
+                  />
+                </>
               )}
               {showUserInfo && (
                 <div
@@ -557,11 +571,12 @@ avatarUrl = '/yazid.png', // Set to empty string for customizable default
                       style={{ width: '38px', height: '38px' }}
                     >
                       {miniAvatarUrl || avatarUrl ? (
-                        <img
+                        <ImageWithSkeleton
                           className="w-full h-full object-cover rounded-full"
                           src={miniAvatarUrl || avatarUrl}
                           alt={`${name || 'User'} mini avatar`}
                           loading="lazy"
+                          skeletonVariant="circular"
                           style={{ display: 'block', gridArea: 'auto', borderRadius: '50%', pointerEvents: 'auto' }}
                           onError={e => {
                             const t = e.target as HTMLImageElement;

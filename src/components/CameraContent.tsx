@@ -48,6 +48,7 @@ export const CameraContent: React.FC = () => {
   const [isSimulatorMode, setIsSimulatorMode] = useState<boolean>(false);
   const [simulatorFrame, setSimulatorFrame] = useState<number>(0);
   const [showGrid, setShowGrid] = useState<boolean>(true);
+  const [isMirrored, setIsMirrored] = useState<boolean>(true);
 
   // States for 4-shot automated loop (classic Photobooth style)
   const [isSeriesCapturing, setIsSeriesCapturing] = useState<boolean>(false);
@@ -180,7 +181,13 @@ export const CameraContent: React.FC = () => {
 
     // Draw frame
     if (!isSimulatorMode && videoRef.current) {
+      ctx.save();
+      if (isMirrored) {
+        ctx.translate(width, 0);
+        ctx.scale(-1, 1);
+      }
       ctx.drawImage(videoRef.current, 0, 0, width, height);
+      ctx.restore();
     } else {
       // Render beautiful interactive simulated live face tracking graphic
       ctx.fillStyle = '#0f172a';
@@ -715,6 +722,7 @@ export const CameraContent: React.FC = () => {
               autoPlay
               playsInline
               muted
+              style={{ transform: isMirrored ? 'scaleX(-1)' : 'none' }}
               className={`w-full h-full object-cover transition-all duration-300 ${FILTER_PRESETS.find(f => f.id === activeFilter)?.css || ''}`}
             />
           ) : (
@@ -789,6 +797,17 @@ export const CameraContent: React.FC = () => {
               title="Aktifkan/nonaktifkan grid rule of thirds"
             >
               Grid {showGrid ? 'On' : 'Off'}
+            </button>
+            <button
+              onClick={() => setIsMirrored(!isMirrored)}
+              className={`px-3 py-2 rounded-xl border text-[11px] sm:text-xs font-semibold tracking-wide transition-all duration-200 cursor-pointer ${
+                isMirrored 
+                  ? 'border-purple-500/50 bg-purple-950/30 text-purple-200' 
+                  : 'border-white/5 bg-white/5 hover:bg-white/10 text-zinc-300'
+              }`}
+              title="Aktifkan/nonaktifkan mode pencerminan horisontal kamera"
+            >
+              Cermin {isMirrored ? 'On' : 'Off'}
             </button>
             <button
               onClick={startCamera}

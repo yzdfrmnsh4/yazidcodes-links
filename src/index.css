@@ -175,3 +175,44 @@ body {
   0% { transform: translate(0%, 0%); opacity: 1; }
   100% { transform: translate(-100%, 0%); opacity: 0; }
 }
+
+/* --- SKELETON SHIMMER EFFECT --- */
+.shimmer-bg {
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.04) 20%,
+    rgba(255, 255, 255, 0.12) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer-anim 1.6s infinite;
+  content: '';
+}
+
+@keyframes shimmer-anim {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* --- MOBILE DUAL FADE SCROLL MASK --- */
+.mask-fade-mobile {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0px, black 50px, black calc(100% - 135px), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0px, black 50px, black calc(100% - 135px), transparent 100%);
+}

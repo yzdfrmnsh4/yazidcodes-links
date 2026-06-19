@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { ImageWithSkeleton } from './ImageWithSkeleton';
+import { Skeleton } from './Skeleton';
 import { 
   User, 
   Code, 
@@ -31,6 +33,16 @@ interface TabItem {
 
 export const FinderContent: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('about');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const handleTabChange = (tabId: string) => {
+    if (tabId === activeTab) return;
+    setIsLoading(true);
+    setActiveTab(tabId);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 450);
+  };
 
   const tabs: TabItem[] = [
     { id: 'about', name: 'Profile Bio', icon: <User size={15} className="text-cyan-400" /> },
@@ -50,7 +62,7 @@ export const FinderContent: React.FC = () => {
               {tabs.map((tab) => (
                 <li key={tab.id}>
                   <button
-                    onClick={() => setActiveTab(tab.id)}
+                    onClick={() => handleTabChange(tab.id)}
                     className={`w-full flex items-center space-x-2.5 px-2.5 py-1.5 rounded-lg text-left text-xs transition-colors focus:outline-none ${
                       activeTab === tab.id 
                         ? 'bg-cyan-500/25 text-cyan-200 border border-cyan-400/20 font-medium' 
@@ -81,12 +93,73 @@ export const FinderContent: React.FC = () => {
 
       {/* Main Directory Area */}
       <div className="flex-1 pl-4 sm:pl-6 overflow-auto">
-        {activeTab === 'about' && (
-          <div className="space-y-4 animate-fade-in">
+        {isLoading ? (
+          // Render Tab-specific skeleton layouts
+          activeTab === 'about' ? (
+            <div className="space-y-4 animate-pulse">
+              <div className="flex items-start space-x-4">
+                <Skeleton variant="rectangular" className="w-16 h-20 shrink-0" />
+                <div className="space-y-2 flex-1">
+                  <Skeleton variant="text" className="w-1/2 h-5" />
+                  <Skeleton variant="text" className="w-1/3 h-4" />
+                  <Skeleton variant="text" className="w-2/3 h-3" />
+                </div>
+              </div>
+              <hr className="border-white/5 mt-3" />
+              <div className="space-y-2">
+                <Skeleton variant="text" />
+                <Skeleton variant="text" />
+                <Skeleton variant="text" className="w-4/5" />
+              </div>
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                <Skeleton variant="rectangular" className="h-16" />
+                <Skeleton variant="rectangular" className="h-16" />
+              </div>
+            </div>
+          ) : activeTab === 'skills' ? (
+            <div className="space-y-3 animate-pulse">
+              <Skeleton variant="text" className="w-1/3 h-4 mb-2" />
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                {Array.from({ length: 6 }).map((_, idx) => (
+                  <Skeleton key={idx} variant="rectangular" className="h-16" />
+                ))}
+              </div>
+            </div>
+          ) : activeTab === 'experience' ? (
+            <div className="space-y-4 animate-pulse">
+              <Skeleton variant="text" className="w-1/3 h-4 mb-2" />
+              <div className="relative border-l border-white/10 pl-4 ml-2 space-y-6">
+                {Array.from({ length: 3 }).map((_, idx) => (
+                  <div key={idx} className="relative space-y-1.5">
+                    <Skeleton variant="circular" className="absolute -left-[21px] top-1 w-2.5 h-2.5" />
+                    <Skeleton variant="text" className="w-1/5 h-3" />
+                    <Skeleton variant="text" className="w-1/3 h-4" />
+                    <Skeleton variant="text" className="w-full h-3" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-3 animate-pulse">
+              <Skeleton variant="rectangular" className="h-20 w-full" />
+              <div className="p-4 bg-slate-950/50 rounded-xl border border-white/10 space-y-3">
+                {Array.from({ length: 5 }).map((_, idx) => (
+                  <div key={idx} className="flex justify-between items-center border-b border-white/5 pb-1">
+                    <Skeleton variant="text" className="w-1/4 h-3.5" />
+                    <Skeleton variant="text" className="w-1/3 h-3.5" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )
+        ) : (
+          <>
+            {activeTab === 'about' && (
+              <div className="space-y-4 animate-fade-in">
             <div className="flex items-start space-x-4">
               <div className="w-16 h-20  shrink-0 shadow-lg border border-white/15 overflow-hidden rounded-md ">
                 {/* <span className="font-bold text-2xl">Y</span> */}
-                <img src="foto.png" alt="" srcset="" className=" size-fit fit" />
+                <ImageWithSkeleton src="foto.png" alt="Muhammad Yazid" className="w-full h-full object-cover" />
 
               </div>
               <div>
@@ -222,7 +295,9 @@ export const FinderContent: React.FC = () => {
             </div>
           </div>
         )}
-      </div>
-    </div>
+      </>
+    )}
+  </div>
+</div>
   );
 };
