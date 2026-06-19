@@ -80,12 +80,12 @@ export const DesktopWidgets: React.FC<DesktopWidgetsProps> = ({ time, onTriggerT
           <div className="absolute top-0 left-0 w-full h-[50%] bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
 
           <div className="flex items-center justify-between border-b border-white/5 pb-1.5">
-            <span className="text-[10px] font-bold text-rose-400 uppercase tracking-widest flex items-center gap-1">
+            <span className="text-[10px] font-bold text-white uppercase tracking-widest flex items-center gap-1">
               {/* <Calendar size={11} /> Kalender */}
               <img src="/iconn/calender.png" alt="" srcset="" className="w-7" /> Kalender
 
             </span>
-            <span className="text-[9px] font-mono text-red-400">{yearName}</span>
+            <span className="text-[9px] font-mono text-white">{yearName}</span>
           </div>
 
           <div className="mt-2.5 flex items-center gap-2">

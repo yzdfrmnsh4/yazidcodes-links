@@ -82,7 +82,7 @@ export const SpotifyPlayer: React.FC = () => {
         {/* Track Metadata Deck */}
         <div className="flex-1 min-w-0 flex flex-col justify-center h-28 sm:h-36 py-1.5">
           <div className="flex items-center justify-between gap-2">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight uppercase leading-tight truncate">
+            <h1 className="text-2xl sm:text-2xl font-extrabold text-white tracking-tight  leading-tight truncate">
               {currentTrack.title}
             </h1>
             
@@ -98,18 +98,18 @@ export const SpotifyPlayer: React.FC = () => {
             </button>
           </div>
           
-          <p className="text-xs sm:text-sm font-semibold tracking-wider text-rose-400/90 truncate mt-1">
+          <p className="text-xs sm:text-sm font-light tracking-wider text-white/90 truncate mt-1">
             {currentTrack.artist} 
           </p>
           
-          <p className="text-[10px] sm:text-xs text-zinc-400 mt-1.5 truncate italic">
+          <p className="text-[10px] sm:text-xs text-zinc-400 mt-1.5 truncate ">
             Album: {currentTrack.album}
           </p>
 
-          <div className="mt-auto hidden sm:flex items-center gap-1.5 text-[10px]  text-zinc-500 tracking-wider">
+          {/* <div className="mt-auto hidden sm:flex items-center gap-1.5 text-[10px]  text-zinc-500 tracking-wider">
             <Music size={11} className="text-rose-500/60" />
             <span>HQ STEREO OUTPUT • 320 KBPS</span>
-          </div>
+          </div> */}
         </div>
 
       </div>

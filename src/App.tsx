@@ -271,10 +271,10 @@ export default function App() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.6 }}
               onClick={cycleWallpaper}
-              className="relative flex flex-col items-center justify-center cursor-pointer select-none group w-20 sm:w-24 P-2 rounded-xl hover:bg-white/10 active:bg-white/15 border border-transparent hover:border-white/10 text-center"
+              className="relative flex flex-col items-center justify-center cursor-pointer select-none group w-20 sm:w-24 h-28 P-2 rounded-xl hover:bg-white/10  active:bg-white/15 border border-transparent hover:border-white/10 text-center"
               title="Ganti Wallpaper Desktop"
             >
-              <div className="relative flex items-center justify-center w-11 h-11 sm:w-13 sm:h-13 rounded-2xl border border-white/20 shadow-lg text-white">
+              <div className="relative flex items-center justify-center w-11 h-11 sm:w-16 sm:h-16  text-white">
                 {/* <Wallpaper size={20} className="group-hover:rotate-12 transition-transform" /> */}
                 <img src="../iconn/wallpaper.png" className="w-full h-full" alt="" srcset="" />
 

@@ -132,7 +132,7 @@ export const SpotifyWidget: React.FC = () => {
                   <h4 className="text-base sm:text-lg font-bold text-white tracking-wide truncate leading-tight">
                     {currentTrack.title}
                   </h4>
-                  <p className="text-xs text-rose-300/80 mt-0.5 font-semibold tracking-wide truncate">
+                  <p className="text-xs text-white mt-0.5 font-thin tracking-wide truncate">
                     {currentTrack.artist}
                   </p>
                 </div>

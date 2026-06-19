@@ -63,13 +63,13 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const [tracks, setTracks] = useState<Track[]>([
     {
-      title: "RED",
-      artist: "Taylor Swift",
+      title: "Leave The Door Open",
+      artist: "Bruno Mars - Topic",
       duration: 223,
-      album: "Red (Taylor's Version)",
-      src: "/RED.mp3",
+      album: "Silk Sonic",
+      src: "/music/Leave The Door Open.mp3",
       coverGradient: "from-amber-600 via-red-600 to-rose-800",
-      coverUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+      coverUrl: "/album/leave open door.webp",
       ambientBackdrop: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1600&q=80",
       ambientColor: "from-red-950 via-rose-900 to-stone-900",
       lyrics: []
@@ -79,7 +79,7 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       artist: "Perunggu",
       duration: 182,
       album: "Memorandum",
-      src: "/music.mp3",
+      src: "/music/iniabadi.mp3",
       coverGradient: "from-amber-500 via-orange-600 to-red-700",
       coverUrl: "/album/momerandum.jpg",
       // ambientBackdrop: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1600&q=80",

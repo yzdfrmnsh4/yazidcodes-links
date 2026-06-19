@@ -12,6 +12,16 @@ import {
   Globe,
   Briefcase
 } from 'lucide-react';
+import { Nextjs } from './icon/tech/NextJs';
+import { TailwindCSS } from './icon/tech/Tailwind';
+import { Motion } from './icon/tech/motion';
+import { TypeScript } from './icon/tech/TypeScript';
+import { Laravel } from './icon/tech/Laravel';
+import { Reactjs } from './icon/tech/React';
+import { Php } from './icon/tech/Php';
+import { JavaScript } from './icon/tech/Javascript';
+import { MySQL } from './icon/tech/Mysql';
+import { PostgreSQL } from './icon/tech/Postgree';
 
 interface TabItem {
   id: string;
@@ -74,7 +84,7 @@ export const FinderContent: React.FC = () => {
         {activeTab === 'about' && (
           <div className="space-y-4 animate-fade-in">
             <div className="flex items-start space-x-4">
-              <div className="w-16 h-16  shrink-0 shadow-lg border border-white/15">
+              <div className="w-16 h-20  shrink-0 shadow-lg border border-white/15 overflow-hidden rounded-md ">
                 {/* <span className="font-bold text-2xl">Y</span> */}
                 <img src="foto.png" alt="" srcset="" className=" size-fit fit" />
 
@@ -114,33 +124,38 @@ export const FinderContent: React.FC = () => {
         )}
 
         {activeTab === 'skills' && (
-          <div className="space-y-4">
+          <div className="space-y-2">
             <h3 className="text-sm font-bold text-white uppercase tracking-wider text-slate-400 mb-1">Core Competency Folders</h3>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
               {[
-                { name: 'Next.js 14/15', level: 'Expert', desc: 'App Router, Server Actions, Optimizations', color: 'from-cyan-500 to-blue-600' },
-                { name: 'Tailwind CSS', level: 'Highly Proficient', desc: 'Utility Design, Fluid Grid Layouts', color: 'from-emerald-500 to-teal-600' },
-                { name: 'Framer Motion', level: 'Expert', desc: '3D Orthogonals, Choreographed Entry', color: 'from-fuchsia-500 to-pink-600' },
-                { name: 'GSAP Animation', level: 'Highly Proficient', desc: 'Timeline Control, Scale ScrollTriggers', color: 'from-orange-500 to-amber-600' },
-                { name: 'TypeScript', level: 'Highly Proficient', desc: 'Type Safety, Abstract System Models', color: 'from-blue-500 to-indigo-600' },
-                { name: 'React Redux', level: 'Proficient', desc: 'Client Cache & State Ingress Hydration', color: 'from-purple-500 to-violet-600' }
+                { name: 'Next.js 14/15', icon: <Nextjs className="w-16" /> },
+                { name: 'Tailwind CSS',  icon: <TailwindCSS className="w-16" />},
+                { name: 'Framer Motion',  icon: <Motion className="w-16" />},
+                { name: 'Lravel', icon: <Laravel className="w-16"  />},
+                { name: 'TypeScript', icon: <TypeScript className="w-16" /> },
+                { name: 'React Redux', icon: <Reactjs className="w-16" />},
+                { name: 'PHP', icon: <Php className="w-16" />},
+                { name: 'Javascript', icon: <JavaScript className="w-16" />},
+                { name: 'Mysql', icon: <MySQL className="w-16" />},
+                { name: 'Postgree', icon: <PostgreSQL className="w-16" />}
               ].map((skill, index) => (
                 <div 
                   key={index} 
-                  className="p-3 bg-slate-950/40 rounded-xl border border-white/5 hover:border-cyan-500/30 transition-all hover:scale-[1.02] flex flex-col justify-between"
+                  className="p-1 rounded-xl border border-white/5 hover:border-cyan-500/30 transition-all    flex items-center justify-center"
                 >
                   <div>
-                    <div className="flex justify-between items-center">
+                    {/* <div className="flex justify-between items-center">
                       <span className="font-semibold text-white text-xs">{skill.name}</span>
                       <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-white/5 text-cyan-300 font-mono scale-90">{skill.level}</span>
-                    </div>
-                    <p className="text-[10px] text-slate-400 mt-1 leading-normal">{skill.desc}</p>
+                    </div> */}
+                    {skill.icon}
+                    {/* <p className="text-[10px] text-slate-400 mt-1 leading-normal">{skill.desc}</p> */}
                   </div>
                   {/* Skill level progress visualizer */}
-                  <div className="w-full h-1 bg-white/10 rounded-full mt-3 overflow-hidden">
+                  {/* <div className="w-full h-1 bg-white/10 rounded-full mt-3 overflow-hidden">
                     <div className={`h-full bg-gradient-to-r ${skill.color}`} style={{ width: skill.level === 'Expert' ? '95%' : '85%' }} />
-                  </div>
+                  </div> */}
                 </div>
               ))}
             </div>
