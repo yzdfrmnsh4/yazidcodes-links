@@ -1,0 +1,22 @@
+{
+  "name": "Muhammad Yazid — macOS Tahoe Link Hub",
+  "short_name": "Yazidcodes Links",
+  "description": "Interactive macOS Tahoe & iOS style desktop link-in-bio hub showcasing developer profile, tech stack, and creative portfolio widgets.",
+  "icons": [
+    {
+      "src": "/yazid.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/yazid.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "display": "standalone",
+  "orientation": "portrait"
+}

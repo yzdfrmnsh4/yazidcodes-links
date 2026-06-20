@@ -167,7 +167,7 @@ export const FinderContent: React.FC = () => {
                 <p className="text-xs text-slate-400">Front-End Developer & UI Architect</p>
                 <p className="text-[11px] text-cyan-400 mt-1 flex items-center gap-1">
                   {/* <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block" /> */}
-                  Available for new contracts / freelance queries
+                  Available for your Project
                 </p>
               </div>
             </div>
@@ -176,7 +176,7 @@ export const FinderContent: React.FC = () => {
 
             <div className="space-y-3 text-slate-300 text-xs leading-relaxed">
               <p>
-                Saya adalah pengembang front-end ahli dengan spesialisasi dalam membangun antarmuka web interaktif yang kompleks, kaya animasi, dan berperforma tinggi. Saya suka bereksperimen dengan konsep UI revolusioner seperti <strong>Glassmorphic Liquid Web UI</strong> dan <strong>Framer Motion orchestration</strong>.
+                Sebagai seorang Fullstack Developer dan UI Architect, saya berfokus pada perancangan antarmuka digital yang tidak hanya memanjakan mata, tetapi juga berkinerja tinggi. Berbekal keahlian di ekosistem modern seperti Next.js dan penerapan animasi tingkat lanjut menggunakan Framer Motion, saya mendedikasikan diri untuk menjembatani estetika desain dengan efisiensi kode. Tujuan saya adalah mengubah konsep visual yang kompleks menjadi pengalaman web interaktif yang mulus.
               </p>
               <p>
                 Website internal ini dibangun di atas React, dikonfigurasi dengan integrasi CSS yang dioptimalkan, serta didesain meniru evolusi fiksi dari macOS (Tahoe) dan iOS 26.
@@ -184,13 +184,15 @@ export const FinderContent: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-3 pt-2">
-              <div className="p-3 bg-white/5 rounded-xl border border-white/5 text-center">
-                <div className="text-xs text-slate-400">Fokus Utama</div>
-                <div className="text-sm font-semibold text-cyan-300 mt-1">Creative Styling & Animations</div>
+              <div className="p-3 bg-white/5 rounded-xl border border-white/5 text-start flex flex-col items-center justify-center">
+                <div className="text-xl font-normal text-white ">2+ year</div>
+                <div className="text-xs text-slate-400">Experience</div>
+
               </div>
-              <div className="p-3 bg-white/5 rounded-xl border border-white/5 text-center">
-                <div className="text-xs text-slate-400">Pekerjaan Saat Ini</div>
-                <div className="text-sm font-semibold text-emerald-300 mt-1">SaaS & Rich Web Widgets</div>
+              <div className="p-3 bg-white/5 rounded-xl border border-white/5 text-start flex flex-col items-center justify-center">
+                <div className="text-xl font-normal text-white ">10+ </div>
+                <div className="text-xs text-slate-400">Technologies</div>
+
               </div>
             </div>
           </div>
@@ -198,7 +200,7 @@ export const FinderContent: React.FC = () => {
 
         {activeTab === 'skills' && (
           <div className="space-y-2">
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider text-slate-400 mb-1">Core Competency Folders</h3>
+            <h3 className="text-sm font-bold text-white uppercase tracking-wider text-slate-400 mb-1">Core Competency </h3>
             
             <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
               {[

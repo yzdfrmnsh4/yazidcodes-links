@@ -31,15 +31,15 @@ export default function App() {
       id: 'tiktok',
       label: 'TikTok Profile',
       iconName: 'tiktok',
-      url: 'https://tiktok.com/@username',
-      tooltip: 'Buka Profil TikTok Muhammad Yazid',
+      url: 'https://tiktok.com/@yaziddev',
+      tooltip: 'My Profil TikTok',
       accentColor: 'shadow-red-500/30'
     },
     {
       id: 'instagram',
       label: 'Instagram',
       iconName: 'instagram',
-      url: 'https://instagram.com/username',
+      url: 'https://instagram.com/yzdfrmnsh',
       tooltip: 'Sapa Saya di Instagram',
       accentColor: 'shadow-orange-500/30'
     },
@@ -48,14 +48,14 @@ export default function App() {
       label: 'LinkedIn',
       iconName: 'linkedin',
       url: 'https://linkedin.com/in/username',
-      tooltip: 'Hubungkan Karir Profesional di LinkedIn',
+      tooltip: 'Connect di LinkedIn',
       accentColor: 'shadow-blue-500/30'
     },
     {
       id: 'github',
       label: 'GitHub Developer',
       iconName: 'github',
-      url: 'https://github.com/username',
+      url: 'https://github.com/yzdfrmnsh4',
       tooltip: 'Lihat Repositori & Kontribusi Kode',
       accentColor: 'shadow-slate-500/30'
     },
@@ -63,7 +63,7 @@ export default function App() {
       id: 'whatsapp',
       label: 'WhatsApp',
       iconName: 'whatsapp',
-      url: 'https://wa.me/628123456789',
+      url: 'https://wa.me/628818208207',
       tooltip: 'Diskusikan Proyek Anda via WhatsApp',
       accentColor: 'shadow-emerald-500/30'
     },
@@ -71,8 +71,8 @@ export default function App() {
       id: 'portfolio',
       label: 'Yazid.dev Portfolio',
       iconName: 'portfolio',
-      url: 'https://yazid.dev',
-      tooltip: 'Kunjungi Website Portofolio Mandiri',
+      url: 'https://yazidcodes.site',
+      tooltip: 'Kunjungi Website Portofolio saya',
       accentColor: 'shadow-cyan-500/30'
     }
   ]);
@@ -401,7 +401,7 @@ export default function App() {
                   window.open('https://wa.me/628123456789', '_blank');
                   triggerToast("💬 Menghubungi Muhammad Yazid di WhatsApp...");
                 }}
-                className="w-[70px] h-[70px] rounded-2xl hover:brightness-110 active:scale-90 transition-transform flex items-center justify-center shadow-lg overflow-hidden"
+                className="w-[64px] h-[64px] rounded-2xl hover:brightness-110 active:scale-90 transition-transform flex items-center justify-center shadow-lg overflow-hidden"
                 title="WhatsApp"
               >
                 <ImageWithSkeleton src="/iconn/whatsApp.png" alt="" className="w-full h-full" />
@@ -411,7 +411,7 @@ export default function App() {
               {/* Launcher 2: Safari Web */}
               <button
                 onClick={() => handleOpenWindow('safari')}
-                className="w-[70px] h-[70px] rounded-2xl  flex items-center justify-center hover:brightness-110 active:scale-90 transition-transform shadow-lg overflow-hidden"
+                className="w-[64px] h-[64px] rounded-2xl  flex items-center justify-center hover:brightness-110 active:scale-90 transition-transform shadow-lg overflow-hidden"
                 title="Safari"
               >
                 <ImageWithSkeleton src="/iconn/safari.png" alt="" className="w-full h-full" />
@@ -421,7 +421,7 @@ export default function App() {
               {/* Launcher 3: Spotify Player */}
               <button
                 onClick={() => handleOpenWindow('spotify')}
-                className="w-[70px] h-[70px] rounded-2xl  flex items-center justify-center hover:brightness-110 active:scale-90 transition-transform shadow-lg overflow-hidden"
+                className="w-[64px] h-[64px] rounded-2xl  flex items-center justify-center hover:brightness-110 active:scale-90 transition-transform shadow-lg overflow-hidden"
                 title="Spotify"
               >
                 {/* <svg viewBox="0 0 24 24" className="w-5 h-5 fill-black" aria-hidden="true">
@@ -433,7 +433,7 @@ export default function App() {
               {/* Launcher 4: Photos Gallery */}
               <button
                 onClick={() => handleOpenWindow('photos')}
-                className="w-[70px] h-[70px] rounded-2xl  flex items-center justify-center hover:brightness-95 active:scale-90 transition-transform shadow-lg overflow-hidden relative"
+                className="w-[64px] h-[64px] rounded-2xl  flex items-center justify-center hover:brightness-95 active:scale-90 transition-transform shadow-lg overflow-hidden relative"
                 title="Galeri"
               >
                 <ImageWithSkeleton src="/iconn/photos.png" alt="" className="w-full h-full" />
@@ -446,7 +446,7 @@ export default function App() {
                   triggerToast("📷 Membuka Photo Booth...");
                   handleOpenWindow('camera');
                 }}
-                className="w-[70px] h-[70px] rounded-2xl  flex items-center justify-center hover:brightness-110 active:scale-90 transition-transform shadow-lg relative overflow-hidden"
+                className="w-[64px] h-[64px] rounded-2xl  flex items-center justify-center hover:brightness-110 active:scale-90 transition-transform shadow-lg relative overflow-hidden"
                 title="Kamera"
               >
                 {/* <Camera size={18} className="text-cyan-400" /> */}

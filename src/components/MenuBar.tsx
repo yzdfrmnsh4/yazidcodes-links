@@ -63,8 +63,8 @@ export const MenuBar: React.FC<MenuBarProps> = ({ time, location, activeWindowLa
 
       {/* Middle section: Username */}
       <div className="absolute left-1/2 -translate-x-1/2 select-none pointer-events-none text-center">
-        <span className="font-semibold tracking-wide text-xs uppercase text-cyan-200/90 drop-shadow-sm">
-          Muhammad Yazid
+        <span className="font-semibold tracking-wide text-xs lowercase text-white drop-shadow-sm">
+          yazidcodes
         </span>
       </div>
 
