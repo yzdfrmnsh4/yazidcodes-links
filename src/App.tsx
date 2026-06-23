@@ -29,11 +29,11 @@ export default function App() {
   const [desktopItems, setDesktopItems] = useState<DesktopItem[]>([
     {
       id: 'tiktok',
-      label: 'TikTok Profile',
+      label: 'TikTok',
       iconName: 'tiktok',
       url: 'https://tiktok.com/@yaziddev',
       tooltip: 'My Profil TikTok',
-      accentColor: 'shadow-red-500/30'
+      accentColor: ''
     },
     {
       id: 'instagram',
@@ -41,23 +41,23 @@ export default function App() {
       iconName: 'instagram',
       url: 'https://instagram.com/yzdfrmnsh',
       tooltip: 'Sapa Saya di Instagram',
-      accentColor: 'shadow-orange-500/30'
+      accentColor: ''
     },
     {
       id: 'linkedin',
       label: 'LinkedIn',
       iconName: 'linkedin',
-      url: 'https://linkedin.com/in/username',
+      url: 'https://linkedin.com/in/m-yazid-ilmany-firmansyah/',
       tooltip: 'Connect di LinkedIn',
-      accentColor: 'shadow-blue-500/30'
+      accentColor: ''
     },
     {
       id: 'github',
-      label: 'GitHub Developer',
+      label: 'GitHub',
       iconName: 'github',
       url: 'https://github.com/yzdfrmnsh4',
       tooltip: 'Lihat Repositori & Kontribusi Kode',
-      accentColor: 'shadow-slate-500/30'
+      accentColor: ''
     },
     {
       id: 'whatsapp',
@@ -65,15 +65,15 @@ export default function App() {
       iconName: 'whatsapp',
       url: 'https://wa.me/628818208207',
       tooltip: 'Diskusikan Proyek Anda via WhatsApp',
-      accentColor: 'shadow-emerald-500/30'
+      accentColor: ''
     },
     {
       id: 'portfolio',
-      label: 'Yazid.dev Portfolio',
+      label: 'Portofolio',
       iconName: 'portfolio',
       url: 'https://yazidcodes.site',
       tooltip: 'Kunjungi Website Portofolio saya',
-      accentColor: 'shadow-cyan-500/30'
+      accentColor: ''
     }
   ]);
 
@@ -324,7 +324,7 @@ export default function App() {
             </div>
 
             {/* iOS App Icon Grid */}
-            <div className="grid grid-cols-4 gap-x-2 gap-y-4 px-2 mt-1 justify-items-center">
+            <div className="grid grid-cols-4 gap-x-2 gap-y-4 px-0  mt-1 justify-between items-center  w-full max-w-[420px] mx-auto">
               {desktopItems.map((item, index) => (
                 <motion.div
                   key={item.id}
@@ -334,9 +334,9 @@ export default function App() {
                   onClick={() => {
                     window.open(item.url, '_blank', 'noreferrer,noopener');
                   }}
-                  className="flex flex-col items-center justify-center cursor-pointer select-none active:opacity-70"
+                  className="flex flex-col items-center justify-center cursor-pointer select-none active:opacity-70 "
                 >
-                  <div className="w-[70px] h-[70px] rounded-2xl shadow-sky-500/10 shadow-lg flex items-center justify-center relative backdrop-blur-xl">
+                  <div className="w-[76px] h-[76px] rounded-2xl  flex items-center justify-center relative backdrop-blur-xl">
                     {/* <span className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent rounded-2xl" /> */}
                     <div className="transform scale-110">
                       {item.id === 'tiktok' && (
@@ -364,9 +364,10 @@ export default function App() {
 
                       )}
                       {item.id === 'portfolio' && (
-                        <ImageWithSkeleton src="/iconn/browser.png" alt="" className="w-full h-full" />
+                        <ImageWithSkeleton src="/web-app-manifest-512x512.png" alt="" className="w-full h-full" />
 
                       )}
+                      
                     </div>
                   </div>
                   <span className="mt-1 text-[10px] text-white font-medium text-center line-clamp-1 max-w-[65px] drop-shadow-sm">
@@ -394,46 +395,44 @@ export default function App() {
 
           {/* iOS Translucent Glass Bottom Dock (Holding WA, Safari, Spotify, Photos, Camera) */}
           <div className="absolute bottom-6 left-0 right-0 z-20 px-4 shrink-0">
-            <div className="mx-auto w-full max-w-[420px] h-[78px] rounded-[28px] backdrop-blur-3xl bg-slate-900/40 border border-white/10 shadow-[0_20px_45px_rgba(0,0,0,0.4)] flex items-center justify-around px-4">
+            <div className="mx-auto w-full max-w-[420px] h-[78px] rounded-[20px] backdrop-blur-2xl  border border-white/10 shadow-[0_20px_45px_rgba(0,0,0,0.4)] flex items-center justify-between px-2 py-2">
               {/* Launcher 1: Phone / WhatsApp Icon */}
               <button
                 onClick={() => {
                   window.open('https://wa.me/628123456789', '_blank');
                   triggerToast("💬 Menghubungi Muhammad Yazid di WhatsApp...");
                 }}
-                className="w-[64px] h-[64px] rounded-2xl hover:brightness-110 active:scale-90 transition-transform flex items-center justify-center shadow-lg overflow-hidden"
+                className="w-[80px] h-[80px] rounded-2xl hover:brightness-110 active:scale-90 transition-transform flex items-center justify-center shadow-lg overflow-hidden"
                 title="WhatsApp"
               >
-                <ImageWithSkeleton src="/iconn/whatsApp.png" alt="" className="w-full h-full" />
+                <ImageWithSkeleton src="/iconn/iMessage.png" alt="" className="w-full h-full" />
                 {/* <WhatsApp className="w-10"/> */}
               </button>
 
               {/* Launcher 2: Safari Web */}
               <button
                 onClick={() => handleOpenWindow('safari')}
-                className="w-[64px] h-[64px] rounded-2xl  flex items-center justify-center hover:brightness-110 active:scale-90 transition-transform shadow-lg overflow-hidden"
+                className="w-[80px] h-[80px] rounded-2xl  flex items-center justify-center hover:brightness-110 active:scale-90 transition-transform shadow-lg overflow-hidden"
                 title="Safari"
               >
-                <ImageWithSkeleton src="/iconn/safari.png" alt="" className="w-full h-full" />
+                <ImageWithSkeleton src="/iconn/safari-dark.png" alt="" className="w-full h-full" />
 
               </button>
 
               {/* Launcher 3: Spotify Player */}
-              <button
+              {/* <button
                 onClick={() => handleOpenWindow('spotify')}
-                className="w-[64px] h-[64px] rounded-2xl  flex items-center justify-center hover:brightness-110 active:scale-90 transition-transform shadow-lg overflow-hidden"
+                className="w-[80px] h-[80px] rounded-2xl  flex items-center justify-center hover:brightness-110 active:scale-90 transition-transform shadow-lg overflow-hidden"
                 title="Spotify"
               >
-                {/* <svg viewBox="0 0 24 24" className="w-5 h-5 fill-black" aria-hidden="true">
-                  <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.565.387-.86.207-2.377-1.454-5.37-1.782-8.895-.98-.336.075-.668-.135-.744-.47-.077-.336.135-.668.47-.743 3.856-.88 7.15-.502 9.822 1.13.296.18.387.563.207.857zm1.225-2.72c-.226.367-.707.487-1.074.26-2.72-1.672-6.87-2.157-10.08-1.182-.413.125-.85-.107-.975-.522-.125-.413.107-.85.522-.975 3.67-1.114 8.243-.574 11.347 1.33.37.227.49.707.26 1.074zm.106-2.833C14.384 8.71 8.522 8.514 5.13 9.544c-.52.157-1.07-.143-1.226-.66-.158-.52.143-1.07.66-1.226 3.9-1.183 10.37-.954 14.43 1.456.468.278.62.882.342 1.35-.277.468-.88.62-1.35.342z"/>
-                </svg> */}
+                
                 <ImageWithSkeleton src="/iconn/spotify.png" alt="" className="w-full h-full" />
-              </button>
+              </button> */}
 
               {/* Launcher 4: Photos Gallery */}
               <button
                 onClick={() => handleOpenWindow('photos')}
-                className="w-[64px] h-[64px] rounded-2xl  flex items-center justify-center hover:brightness-95 active:scale-90 transition-transform shadow-lg overflow-hidden relative"
+                className="w-[80px] h-[80px] rounded-2xl  flex items-center justify-center hover:brightness-95 active:scale-90 transition-transform shadow-lg overflow-hidden relative"
                 title="Galeri"
               >
                 <ImageWithSkeleton src="/iconn/photos.png" alt="" className="w-full h-full" />
@@ -446,7 +445,7 @@ export default function App() {
                   triggerToast("📷 Membuka Photo Booth...");
                   handleOpenWindow('camera');
                 }}
-                className="w-[64px] h-[64px] rounded-2xl  flex items-center justify-center hover:brightness-110 active:scale-90 transition-transform shadow-lg relative overflow-hidden"
+                className="w-[80px] h-[80px] rounded-2xl  flex items-center justify-center hover:brightness-110 active:scale-90 transition-transform shadow-lg relative overflow-hidden"
                 title="Kamera"
               >
                 {/* <Camera size={18} className="text-cyan-400" /> */}
