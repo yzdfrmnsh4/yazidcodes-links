@@ -535,7 +535,7 @@ export default function App() {
       {/* 6. Camera Modal */}
       <Modal
         id="camera"
-        title="Photo Booth — Kamera Efek"
+        title="Photo Booth"
         isOpen={openWindows.camera}
         onClose={() => handleCloseWindow('camera')}
         zIndex={zIndexStack.camera}
@@ -547,6 +547,7 @@ export default function App() {
         minHeight={480}
         maxWidth={960}
         maxHeight={800}
+        noPadding={true}
       >
         <CameraContent />
       </Modal>

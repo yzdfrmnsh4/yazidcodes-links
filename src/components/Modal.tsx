@@ -17,6 +17,7 @@ interface ModalProps {
   maxWidth?: number;
   minHeight?: number;
   maxHeight?: number;
+  noPadding?: boolean;
 }
 
 export const Modal: React.FC<ModalProps> = ({
@@ -33,7 +34,8 @@ export const Modal: React.FC<ModalProps> = ({
   minWidth = 320,
   maxWidth = 1200,
   minHeight = 280,
-  maxHeight = 900
+  maxHeight = 900,
+  noPadding = false
 }) => {
   const [isMaximized, setIsMaximized] = useState(false);
   const [position, setPosition] = useState({ x: 50, y: 80 }); // start responsive position
@@ -246,7 +248,9 @@ export const Modal: React.FC<ModalProps> = ({
 
           {/* Window Content */}
           <div
-            className="flex-1 overflow-auto p-5 scrollbar-thin scrollbar-thumb-white/10 relative"
+            className={`flex-1 overflow-auto scrollbar-thin scrollbar-thumb-white/10 relative ${
+              noPadding ? 'p-0' : 'p-5'
+            }`}
             style={{
               maxHeight: isMaximized ? 'none' : '100%',
               minHeight: '200px'
