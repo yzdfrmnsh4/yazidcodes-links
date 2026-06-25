@@ -124,7 +124,7 @@ export const SpotifyWidget: React.FC = () => {
             <div className="h-6" />
 
             {/* Glowing Translucent Control Panel Widget */}
-            <div className="w-full p-4.5 rounded-3xl border border-white/10 backdrop-blur-3xl bg-slate-900/45 text-slate-200 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] relative overflow-hidden">
+            <div className="w-full p-4.5 rounded-3xl border border-white/10 backdrop-blur-2xl text-slate-200 shadow-md relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-[50%] bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
 
               {/* Title & Artist & EQ Bars */}
@@ -196,7 +196,7 @@ export const SpotifyWidget: React.FC = () => {
                   {/* Play/Pause Main Button */}
                   <button
                     onClick={togglePlay}
-                    className="w-11 h-11 rounded-full border border-white/20 bg-white/15 hover:bg-white/25 flex items-center justify-center text-white backdrop-blur-md shadow-lg active:scale-95 transition-all duration-300 cursor-pointer"
+                    className="w-11 h-11 rounded-full border border-white/50 bg-white/15 hover:bg-white/25 flex items-center justify-center text-white backdrop-blur-md shadow-lg active:scale-95 transition-all duration-300 cursor-pointer"
                     title={isPlaying ? "Pause" : "Play"}
                   >
                     {isPlaying ? (
@@ -235,7 +235,7 @@ export const SpotifyWidget: React.FC = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -15 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="w-full max-w-[420px] p-2.5 rounded-xl border border-white/10 backdrop-blur-3xl bg-slate-900/45 text-slate-200 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] relative overflow-hidden"
+            className="w-full max-w-[420px] p-2.5  rounded-xl border border-white/15  backdrop-blur-2xl text-slate-200 shadow-md relative overflow-hidden"
           >
             <div className="absolute top-0 left-0 w-full h-[50%] bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
 
@@ -284,7 +284,7 @@ export const SpotifyWidget: React.FC = () => {
 
                 <div
                   onClick={handleTimelineClick}
-                  className="h-1.5 w-full bg-white/10 hover:bg-white/15 rounded-full cursor-pointer relative transition-all group/seek"
+                  className="h-1.5 w-full bg-white/20 hover:bg-white/15 rounded-full cursor-pointer relative transition-all group/seek"
                 >
                   {/* Active seek background fill */}
                   <div
@@ -321,32 +321,32 @@ export const SpotifyWidget: React.FC = () => {
                 {/* Previous Track */}
                 <button
                   onClick={handlePrev}
-                  className="text-zinc-400 hover:text-white transition cursor-pointer active:scale-90"
+                  className="text-zinc-50 hover:text-white transition cursor-pointer active:scale-90"
                   title="Lagu Sebelumnya"
                 >
-                  <SkipBack size={18} fill="currentColor" />
+                  <SkipBack size={22} fill="currentColor" />
                 </button>
 
                 {/* Play/Pause Button */}
                 <button
                   onClick={togglePlay}
-                  className="w-11 h-11 rounded-full border border-white/20 bg-white/15 hover:bg-white/25 flex items-center justify-center text-white backdrop-blur-md shadow-lg active:scale-95 transition-all duration-300 cursor-pointer"
+                  className="w-11 h-11  flex items-center justify-center text-white  active:scale-95 transition-all duration-300 cursor-pointer"
                   title={isPlaying ? "Pause" : "Play"}
                 >
                   {isPlaying ? (
-                    <Pause size={16} fill="currentColor" />
+                    <Pause size={25} fill="currentColor" />
                   ) : (
-                    <Play size={16} fill="currentColor" className="ml-0.5" />
+                    <Play size={25} fill="currentColor" className="ml-0.5" />
                   )}
                 </button>
 
                 {/* Next Track */}
                 <button
                   onClick={handleNext}
-                  className="text-zinc-400 hover:text-white transition cursor-pointer active:scale-90"
+                  className="text-zinc-50 hover:text-white transition cursor-pointer active:scale-90"
                   title="Lagu Berikutnya"
                 >
-                  <SkipForward size={18} fill="currentColor" />
+                  <SkipForward size={22} fill="currentColor" />
                 </button>
               </div>
 

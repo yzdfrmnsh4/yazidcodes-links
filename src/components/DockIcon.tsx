@@ -92,7 +92,7 @@ export const DockIcon: React.FC<DockIconProps> = ({
         {isOpen && (
           <motion.div 
             layoutId={`active-dot-${id}`}
-            className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]"
+            className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255, 255, 255, 0.8)]"
           />
         )}
       </div>

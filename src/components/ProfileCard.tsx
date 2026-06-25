@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useCallback, useMemo, useState } from 'react'
 import { ImageWithSkeleton } from './ImageWithSkeleton';
 import { Skeleton } from './Skeleton';
 
-const DEFAULT_INNER_GRADIENT = 'linear-gradient(145deg, #1e293b 0%, #0f172a 100%)';
+const DEFAULT_INNER_GRADIENT = 'linear-gradient(145deg, rgba(30, 41, 59, 0) 0%, rgba(15, 23, 42, 0) 100%)';
 
 const ANIMATION_CONFIG = {
   INITIAL_DURATION: 1200,
@@ -471,10 +471,13 @@ avatarUrl = '/yazid.png', // Set to empty string for customizable default
             borderRadius: cardRadius,
             backgroundBlendMode: 'color-dodge, normal, normal, normal',
             boxShadow:
-              'rgba(0, 0, 0, 0.8) calc((var(--pointer-from-left) * 10px) - 3px) calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px',
+              'inset 1.5px 1.5px 0px rgba(255, 255, 255, 0.25), inset -1.5px -1.5px 0px rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.8) calc((var(--pointer-from-left) * 10px) - 3px) calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px',
             transition: 'transform 1s ease',
             transform: 'translateZ(0) rotateX(0deg) rotateY(0deg)',
-            background: 'rgba(0, 0, 0, 0.9)',
+            background: 'rgba(255, 0, 0, 0.0)',
+            backdropFilter: 'blur(30px)',
+            WebkitBackdropFilter: 'blur(30px)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
             backfaceVisibility: 'hidden'
           }}
           onMouseEnter={e => {
@@ -495,14 +498,24 @@ avatarUrl = '/yazid.png', // Set to empty string for customizable default
             className="absolute inset-0"
             style={{
               backgroundImage: 'var(--inner-gradient)',
-              backgroundColor: 'rgba(0, 0, 0, 0.9)',
+              backgroundColor: 'rgba(255, 255, 255, 0.02)',
+              backdropFilter: 'blur(30px)',
+              WebkitBackdropFilter: 'blur(30px)',
               borderRadius: cardRadius,
               display: 'grid',
               gridArea: '1 / -1'
             }}
           >
-            {/* Shine layer */}
-            <div style={shineStyle} />
+            {/* Corner Shine Highlights (Top-Left & Bottom-Right) */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                borderRadius: cardRadius,
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0.1) 100%)',
+                zIndex: 1,
+                gridArea: '1 / -1'
+              }}
+            />
 
             {/* Glare layer */}
             <div style={glareStyle} />

@@ -60,11 +60,11 @@ export const DesktopWidgets: React.FC<DesktopWidgetsProps> = ({ time, onTriggerT
       {isMobile ? (
         <div className="w-full">
           <ProfileCard
-            behindGlowEnabled={false}
+            behindGlowEnabled={true}
             showUserInfo={false}
             enableTilt={true}
             enableMobileTilt={true}
-            innerGradient="linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)"
+            innerGradient="linear-gradient(145deg,#ffffff0 0%,#0f72b90 100%)"
             onContactClick={() => {
               onTriggerToast("✉️ Menghubungi Muhammad Yazid...");
               window.open("mailto:locallhost8000@gmail.com", "_blank");

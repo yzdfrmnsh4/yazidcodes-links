@@ -8,45 +8,59 @@ interface RightWidgetsProps {
 
 export const RightWidgets: React.FC<RightWidgetsProps> = ({ time }) => {
   // Get date names in WIB (Asia/Jakarta) timezone
-  const dayName = time.toLocaleDateString('id-ID', { weekday: 'long', timeZone: 'Asia/Jakarta' });
+  const dayNameEnglish = time.toLocaleDateString('id-ID', { weekday: 'long', timeZone: 'Asia/Jakarta' }).toUpperCase();
   const dayNum = time.toLocaleDateString('id-ID', { day: 'numeric', timeZone: 'Asia/Jakarta' });
 
+  // Calculate monthly calendar grid in WIB timezone
+  const getCalendarMonthData = (date: Date) => {
+    const formatter = new Intl.DateTimeFormat('id-ID', {
+      timeZone: 'Asia/Jakarta',
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric'
+    });
+    const parts = formatter.formatToParts(date);
+    const year = parseInt(parts.find(p => p.type === 'year')?.value || '2026', 10);
+    const month = parseInt(parts.find(p => p.type === 'month')?.value || '1', 10) - 1; // 0-indexed
+    const todayNum = parseInt(parts.find(p => p.type === 'day')?.value || '1', 10);
 
-  // Dynamically calculate tomorrow, day after, and 3 days from now in WIB
-  const getUpcomingDay = (offset: number) => {
-    const d = new Date(time);
-    // Offset using getTime to avoid calendar timezone issues
-    d.setTime(time.getTime() + offset * 24 * 60 * 60 * 1000);
+    const monthName = new Date(year, month, 1).toLocaleDateString('id-ID', { month: 'long' }).toUpperCase();
+
+    const firstDay = new Date(year, month, 1);
+    const startDayOfWeek = firstDay.getDay();
+
+    const totalDays = new Date(year, month + 1, 0).getDate();
+
+    const dayCells: (number | null)[] = [];
+    for (let i = 0; i < startDayOfWeek; i++) {
+      dayCells.push(null);
+    }
+    for (let i = 1; i <= totalDays; i++) {
+      dayCells.push(i);
+    }
+
     return {
-      day: d.toLocaleDateString('id-ID', { 
-        weekday: 'long', 
-        month: 'short', 
-        day: 'numeric',
-        timeZone: 'Asia/Jakarta' 
-      }),
-      label: '2 all-day events'
+      monthName,
+      todayNum,
+      dayCells
     };
   };
 
-  const upcomingEvents = [
-    getUpcomingDay(1),
-    getUpcomingDay(2),
-    getUpcomingDay(3)
-  ];
+  const { monthName, todayNum, dayCells } = getCalendarMonthData(time);
 
   return (
     <div className="flex flex-col items-stretch gap-3 w-full select-none">
       {/* Row 1: Calendar Widget */}
-      <div className="p-3 rounded-[20px] border border-white/10 backdrop-blur-3xl bg-slate-900/40 text-slate-200 shadow-xl relative overflow-hidden flex flex-row gap-3 min-h-[110px]">
+      <div className="p-3 rounded-[20px] border border-white/15 backdrop-blur-3xl  text-slate-200 shadow-sm relative overflow-hidden flex flex-row gap-3 min-h-[145px]">
         {/* Glass reflection */}
         <div className="absolute top-0 left-0 w-full h-[50%] bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
 
         {/* Left side: Date Badge */}
-        <div className="flex flex-col items-center justify-center pr-3 border-r border-white/5 w-[85px] shrink-0 text-center">
-          <span className="text-[8px] font-black text-rose-500 uppercase tracking-widest leading-none">
-            {dayName}
+        <div className="flex flex-col items-start justify-start pl-1 pr-3 border-r border-white/5 w-[100px] shrink-0 text-left ">
+          <span className="text-[11px] font-bold text-rose-500 uppercase tracking-widest leading-none">
+            {dayNameEnglish}
           </span>
-          <span className="text-3xl font-extrabold text-white my-1 leading-none">
+          <span className="text-4xl font-extrabold text-white mt-2 mb-4 leading-none">
             {dayNum}
           </span>
           <span className="text-[8px] font-medium text-slate-400 leading-tight">
@@ -54,72 +68,87 @@ export const RightWidgets: React.FC<RightWidgetsProps> = ({ time }) => {
           </span>
         </div>
 
-        {/* Right side: Dynamic Events List */}
-        <div className="flex-1 flex flex-col justify-center gap-1.5 text-left">
-          {upcomingEvents.map((ev, idx) => (
-            <div key={idx} className="flex flex-col gap-0.5">
-              <span className="text-[7.5px] font-bold text-slate-400 uppercase tracking-wide leading-none">{ev.day}</span>
-              <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0 animate-pulse" />
-                <span className="text-[8.5px] font-semibold text-slate-200 leading-none">{ev.label}</span>
-              </div>
-            </div>
-          ))}
+        {/* Right side: Monthly Calendar Grid */}
+        <div className="flex-1 flex flex-col justify-center pl-1 text-left">
+          <div className="text-[11px] font-bold text-rose-500 uppercase tracking-widest leading-none mb-1.5">
+            {monthName}
+          </div>
+          <div className="grid grid-cols-7 gap-y-1 gap-x-1.5 text-center text-[9px] font-semibold text-slate-300 w-full">
+            {['M', 'S', 'S', 'R', 'K', 'J', 'S'].map((d, idx) => (
+              <div key={idx} className="text-zinc-200 font-extrabold text-[10px]">{d}</div>
+            ))}
+            {dayCells.map((day, idx) => {
+              if (day === null) {
+                return <div key={idx} />;
+              }
+              const isToday = day === todayNum;
+              return (
+                <div 
+                  key={idx} 
+                  className={`flex items-center justify-center w-[16px] h-[16px] rounded-full mx-auto text-[8.5px] ${
+                    isToday ? 'bg-[#DF2020] text-white font-black shadow-[0_0_8px_rgba(223,32,32,0.6)]' : 'text-slate-200'
+                  }`}
+                >
+                  {day}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
       {/* Row 2: Battery Indicators */}
-      <div className="p-3 rounded-[20px] border border-white/10 backdrop-blur-3xl bg-slate-900/40 text-slate-200 shadow-xl relative overflow-hidden flex flex-col justify-center min-h-[80px]">
+      <div className="p-3 rounded-[20px] border border-white/15 backdrop-blur-3xl  text-slate-200 shadow-sm relative overflow-hidden flex flex-col justify-center min-h-[80px]">
         <div className="flex items-center justify-between px-1 w-full gap-1.5">
           {/* Ring 1: Active Laptop */}
           <div className="flex-1 flex flex-col items-center gap-1">
             <div className="relative w-10 h-10 flex items-center justify-center">
-              <svg className="absolute w-full h-full transform -rotate-90">
-                <circle cx="20" cy="20" r="16" stroke="rgba(255,255,255,0.05)" strokeWidth="2.5" fill="transparent" />
+              <svg className="absolute w-full h-full transform -rotate-90 ">
+                <circle cx="20" cy="20" r="16" stroke="rgba(255,255,255,0.05)" strokeWidth="4" fill="transparent" />
                 <circle 
                   cx="20" 
                   cy="20" 
                   r="16" 
                   stroke="#22C55E" 
-                  strokeWidth="2.5" 
+                  strokeWidth="4" 
                   fill="transparent" 
                   strokeDasharray={2 * Math.PI * 16}
                   strokeDashoffset={2 * Math.PI * 16 * (1 - 0.76)} 
                 />
               </svg>
-              <Laptop size={12} className="text-white relative z-10" />
+              <Laptop size={14} className="text-white relative z-10" />
             </div>
-            <span className="text-[8.5px] font-bold text-slate-300">76%</span>
+            <span className="text-[10px] font-bold text-white">76%</span>
           </div>
 
           {/* Ring 2: Empty */}
           <div className="flex-1 flex flex-col items-center gap-1 opacity-40">
             <div className="relative w-10 h-10 flex items-center justify-center">
               <svg className="absolute w-full h-full">
-                <circle cx="20" cy="20" r="16" stroke="rgba(255,255,255,0.15)" strokeWidth="2.5" fill="transparent" />
+                <circle cx="20" cy="20" r="16" stroke="rgba(255,255,255,0.15)" strokeWidth="4" fill="transparent" />
               </svg>
             </div>
-            <span className="text-[8.5px] font-bold text-slate-500">—</span>
+            <span className="text-[10px] font-bold text-slate-500">—</span>
           </div>
 
           {/* Ring 3: Empty */}
           <div className="flex-1 flex flex-col items-center gap-1 opacity-40">
             <div className="relative w-10 h-10 flex items-center justify-center">
               <svg className="absolute w-full h-full">
-                <circle cx="20" cy="20" r="16" stroke="rgba(255,255,255,0.15)" strokeWidth="2.5" fill="transparent" />
+                <circle cx="20" cy="20" r="16" stroke="rgba(255,255,255,0.15)" strokeWidth="4" fill="transparent" />
               </svg>
             </div>
-            <span className="text-[8.5px] font-bold text-slate-500">—</span>
+            <span className="text-[10px] font-bold text-slate-500">—</span>
           </div>
 
           {/* Ring 4: Empty */}
           <div className="flex-1 flex flex-col items-center gap-1 opacity-40">
             <div className="relative w-10 h-10 flex items-center justify-center">
               <svg className="absolute w-full h-full">
-                <circle cx="20" cy="20" r="16" stroke="rgba(255,255,255,0.15)" strokeWidth="2.5" fill="transparent" />
+                <circle cx="20" cy="20" r="16" stroke="rgba(255,255,255,0.15)" strokeWidth="4" fill="transparent" />
               </svg>
             </div>
-            <span className="text-[8.5px] font-bold text-slate-500">—</span>
+            <span className="text-[10px] font-bold text-slate-500">—</span>
           </div>
         </div>
       </div>

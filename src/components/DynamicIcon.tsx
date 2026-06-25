@@ -151,7 +151,7 @@ export const DynamicIcon: React.FC<DynamicIconProps> = ({ name, className = '', 
         {isSafari ? (
             <ImageWithSkeleton src="/iconn/safari.png" alt="safari-icon" className="w-full h-full" />
         ) : (
-            <ImageWithSkeleton src="/iconn/browser.png" alt="browser-icon" className="w-full h-full" />
+            <ImageWithSkeleton src="/web-app-manifest-512x512.png" alt="browser-icon" className="w-full h-full" />
         )}
       </div>
     );

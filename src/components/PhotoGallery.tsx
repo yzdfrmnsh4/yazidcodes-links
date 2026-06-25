@@ -17,23 +17,23 @@ export const PhotoGallery: React.FC = () => {
   const photos: Photo[] = [
     {
       id: 1,
-      title: "Lake Tahoe Emerald Shallows",
-      location: "Emerald Bay, Lake Tahoe",
-      url: "https://images.pexels.com/photos/1106472/pexels-photo-1106472.jpeg",
-      photographer: "Sebastian Voortman"
+      title: "-",
+      location: "-",
+      url: "/photos/image-1.jpeg",
+      photographer: ""
     },
     {
       id: 2,
-      title: "Crystal Clear Aqua Waves",
-      location: "East Shore, Tahoe",
-      url: "https://images.pexels.com/photos/2085998/pexels-photo-2085998.jpeg",
+      title: "-",
+      location: "-",
+      url: "/photos/image-2.jpg",
       photographer: "John Doe"
     },
     {
       id: 3,
       title: "Serene Cosmic Horizon Reflection",
       location: "Sierra Mountains, Tahoe",
-      url: "https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg",
+      url: "/photos/image-3.jpeg",
       photographer: "Yuri"
     }
   ];
@@ -85,10 +85,10 @@ export const PhotoGallery: React.FC = () => {
         <div className="absolute bottom-3 left-4 right-4 flex justify-between items-end">
           <div className="space-y-0.5">
             <span className="text-[9px] uppercase font-bold text-cyan-300 tracking-wider flex items-center gap-1">
-              <Map size={10} /> {activePhoto.location}
+              {/* <Map size={10} /> {activePhoto.location} */}
             </span>
-            <h4 className="text-sm font-bold text-white drop-shadow-md">{activePhoto.title}</h4>
-            <p className="text-[10px] text-slate-300 opacity-80">Photo by {activePhoto.photographer}</p>
+            {/* <h4 className="text-sm font-bold text-white drop-shadow-md">{activePhoto.title}</h4> */}
+            {/* <p className="text-[10px] text-slate-300 opacity-80">Photo by {activePhoto.photographer}</p> */}
           </div>
 
           <div className="flex space-x-2">
@@ -106,7 +106,7 @@ export const PhotoGallery: React.FC = () => {
 
       {/* Grid Thumbnail selector */}
       <div className="mt-4">
-        <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider pl-1 mb-2 block">All Assets</span>
+        <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider pl-1 mb-2 block">All Image</span>
         <div className="grid grid-cols-3 gap-3">
           {photos.map((item) => (
             <div

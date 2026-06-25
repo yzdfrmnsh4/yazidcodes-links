@@ -118,18 +118,18 @@ export const SafariContent: React.FC = () => {
         </div>
 
         {/* Action badge */}
-        <div className="hidden sm:inline-flex items-center space-x-1.5 px-2.5 py-1 rounded bg-cyan-500/20 text-[10px] uppercase font-bold text-cyan-300 border border-cyan-400/20 shrink-0 select-none">
+        {/* <div className="hidden sm:inline-flex items-center space-x-1.5 px-2.5 py-1 rounded bg-cyan-500/20 text-[10px] uppercase font-bold text-cyan-300 border border-cyan-400/20 shrink-0 select-none">
           <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping" />
-          <span>Safari v26</span>
-        </div>
+          <span>Safari</span>
+        </div> */}
       </div>
 
       {/* Bookmarks Bar */}
       <div className="flex items-center space-x-4 px-2 py-2 border-b border-white/5 text-[10px] text-slate-400 font-medium">
         <span className="text-slate-500 uppercase tracking-widest font-semibold scale-90">Bookmarked:</span>
-        <button onClick={() => navigateTo('https://yazid.dev/portfolio', 'Muhammad Yazid Portfolio')} className="hover:text-cyan-200 flex items-center gap-1 transition-colors">🔥 My Portfolio</button>
-        <button onClick={() => navigateTo('https://github.com/username', 'GitHub Repositories')} className="hover:text-cyan-200 flex items-center gap-1 transition-colors">💻 OpenGitHub</button>
-        <button onClick={() => navigateTo('https://wa.me/628123456789', 'WhatsApp Private Dial')} className="hover:text-cyan-200 flex items-center gap-1 transition-colors">📞 WhatsApp</button>
+        <button onClick={() => navigateTo('https://yaziddev.vercel.app', 'Muhammad Yazid Portfolio')} className="hover:text-cyan-200 flex items-center gap-1 transition-colors">🔥 My Portfolio</button>
+        <button onClick={() => navigateTo('https://github.com/yzdfrmnsh4', 'GitHub Repositories')} className="hover:text-cyan-200 flex items-center gap-1 transition-colors">💻 OpenGitHub</button>
+        <button onClick={() => navigateTo('https://wa.me/628818208207', 'WhatsApp Private Dial')} className="hover:text-cyan-200 flex items-center gap-1 transition-colors">📞 WhatsApp</button>
       </div>
 
       {/* Browser Viewport View */}
@@ -138,7 +138,7 @@ export const SafariContent: React.FC = () => {
           <div className="space-y-4 animate-fade-in text-xs">
             <div className="p-4 bg-gradient-to-tr from-cyan-900/40 to-slate-900/40 rounded-xl border border-cyan-500/15">
               <h4 className="text-sm font-bold text-cyan-200 flex items-center gap-1.5">
-                <span>Featured Project: macOS Tahoe Studio OS</span>
+                <span>Featured Project: Link Bio macOS Style</span>
                 <span className="text-[10px] bg-cyan-500/20 text-cyan-300 font-mono font-bold uppercase py-0.5 px-1.5 rounded">Core-SPA</span>
               </h4>
               <p className="text-slate-300 mt-2 leading-relaxed">
@@ -148,6 +148,8 @@ export const SafariContent: React.FC = () => {
                 <span className="px-2 py-0.5 bg-white/5 border border-white/5 text-[10px] text-slate-400 rounded-md">React 19</span>
                 <span className="px-2 py-0.5 bg-white/5 border border-white/5 text-[10px] text-slate-400 rounded-md">Tailwind v4</span>
                 <span className="px-2 py-0.5 bg-white/5 border border-white/5 text-[10px] text-slate-400 rounded-md">Framer Motion</span>
+                <span className="px-2 py-0.5 bg-white/5 border border-white/5 text-[10px] text-slate-400 rounded-md">WebGl</span>
+                <span className="px-2 py-0.5 bg-white/5 border border-white/5 text-[10px] text-slate-400 rounded-md">macOS Icon</span>
               </div>
             </div>
 

@@ -87,7 +87,7 @@ export const FinderContent: React.FC = () => {
         </div>
 
         <div className="p-2 border-t border-white/5 text-[10px] text-slate-500 leading-normal">
-          <span>Yazid OS build v26.04</span>
+          <span>Yazidcodes OS build v26.04</span>
         </div>
       </div>
 
@@ -243,9 +243,8 @@ export const FinderContent: React.FC = () => {
 
             <div className="relative border-l border-white/10 pl-4 ml-2 space-y-5">
               {[
-                { period: '2024 - Sekarang', title: 'Senior Front-End Architect', company: 'Interactive Solutions', desc: 'Memimpin arsitektur web micro-frontends berbasis Next.js App Router, menghemat load time 40% dan mengorkestrasikan animasi high-fidelity.' },
-                { period: '2022 - 2024', title: 'Creative Interactive Developer', company: 'Nebula Creative Lab', desc: 'Mendesain website pemasaran premium, landing page interaktif dengan visual 3D Three.js dan transisi GSAP.' },
-                { period: '2020 - 2022', title: 'Fullstack Web Engineer', company: 'Digital Agency Bandung', desc: 'Pengembangan full-stack aplikasi logistik dengan React, Node, Express, serta optimalisasi basis data relational.' }
+                { period: 'Jan 2025 - Apr 2025', title: 'Fullstack Developer Intern', company: 'PT Pesat Aghni Solusi', desc: 'Mengembangkan aplikasi web menggunakan Laravel dan jQuery, berkolaborasi dengan pengembang senior dalam proyek klien.' },
+                { period: 'Agust 2025 - Sekarang', title: 'Freelance Creative Developer & Content Creator', company: 'yazidcodes', desc: 'Mengembangkan Konten Edukasi Mengenai Dunia Programming, mengerjakan proyek-proyek klien secara mandiri.' }
               ].map((exp, index) => (
                 <div key={index} className="relative">
                   {/* Timeline Node dot */}
@@ -264,7 +263,7 @@ export const FinderContent: React.FC = () => {
             <div className="p-4 bg-slate-950/50 rounded-xl border border-white/10 flex items-center space-x-4">
               <Cpu className="text-rose-400 w-10 h-10 animate-pulse shrink-0" />
               <div className="space-y-1">
-                <div className="text-xs font-bold text-white">YAZID TAHOE CHIP (X26 CORE)</div>
+                <div className="text-xs font-bold text-white">SNAPDRAGON (X26 CORE)</div>
                 <div className="text-[11px] text-slate-400 font-mono">Processors: TSMC 1.8nm liquid computing nodes</div>
                 <div className="text-[11px] text-emerald-400 font-mono">Frequency: 5.6 GHz turbo charge</div>
               </div>
