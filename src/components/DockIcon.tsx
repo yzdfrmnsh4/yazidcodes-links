@@ -88,7 +88,7 @@ export const DockIcon: React.FC<DockIconProps> = ({
       </motion.button>
 
       {/* Active Indicator LED dot under the icon */}
-      <div className="h-1.5 mt-0.5 flex items-center justify-center select-none pointer-events-none">
+      <div className="h-1.5 -mt-1 flex items-center justify-center select-none pointer-events-none">
         {isOpen && (
           <motion.div 
             layoutId={`active-dot-${id}`}

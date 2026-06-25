@@ -3,7 +3,7 @@ import { DockIcon } from './DockIcon';
 import { AppWindowId } from '../types';
 
 interface DockItemDef {
-  id: AppWindowId | 'alert_welcome' | 'whatsapp';
+  id: string;
   label: string;
   iconName: string;
   targetWindowId?: AppWindowId;
@@ -14,9 +14,10 @@ interface DockProps {
   onOpenWindow: (id: AppWindowId) => void;
   openWindows: Record<AppWindowId, boolean>;
   onTriggerToast: (msg: string) => void;
+  onCycleWallpaper?: () => void;
 }
 
-export const Dock: React.FC<DockProps> = ({ onOpenWindow, openWindows, onTriggerToast }) => {
+export const Dock: React.FC<DockProps> = ({ onOpenWindow, openWindows, onTriggerToast, onCycleWallpaper }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const dockItems: DockItemDef[] = [
@@ -40,11 +41,56 @@ export const Dock: React.FC<DockProps> = ({ onOpenWindow, openWindows, onTrigger
       }
     },
     {
+      id: 'portfolio',
+      label: 'Portofolio',
+      iconName: 'portfolio',
+      action: () => {
+        window.open('https://yazidcodes.site', '_blank');
+        onTriggerToast("🌐 Membuka website Portofolio Muhammad Yazid...");
+      }
+    },
+    {
+      id: 'tiktok',
+      label: 'TikTok',
+      iconName: 'tiktok',
+      action: () => {
+        window.open('https://tiktok.com/@yaziddev', '_blank');
+        onTriggerToast("🎵 Membuka profil TikTok Muhammad Yazid...");
+      }
+    },
+    {
+      id: 'instagram',
+      label: 'Instagram',
+      iconName: 'instagram',
+      action: () => {
+        window.open('https://instagram.com/yzdfrmnsh', '_blank');
+        onTriggerToast("📸 Membuka Instagram Muhammad Yazid...");
+      }
+    },
+    {
+      id: 'linkedin',
+      label: 'LinkedIn',
+      iconName: 'linkedin',
+      action: () => {
+        window.open('https://linkedin.com/in/m-yazid-ilmany-firmansyah/', '_blank');
+        onTriggerToast("💼 Membuka LinkedIn Muhammad Yazid...");
+      }
+    },
+    {
+      id: 'github',
+      label: 'GitHub',
+      iconName: 'github',
+      action: () => {
+        window.open('https://github.com/yzdfrmnsh4', '_blank');
+        onTriggerToast("💻 Membuka GitHub Muhammad Yazid...");
+      }
+    },
+    {
       id: 'whatsapp',
       label: 'WhatsApp Chat',
       iconName: 'whatsapp',
       action: () => {
-        window.open('https://wa.me/628123456789', '_blank');
+        window.open('https://wa.me/628818208207', '_blank');
         onTriggerToast("💬 Menghubungi Muhammad Yazid di WhatsApp...");
       }
     },
@@ -84,12 +130,22 @@ export const Dock: React.FC<DockProps> = ({ onOpenWindow, openWindows, onTrigger
         onTriggerToast("📷 Membuka Photo Booth...");
         onOpenWindow('camera');
       }
+    },
+    {
+      id: 'wallpaper',
+      label: 'Ganti Wallpaper',
+      iconName: 'wallpaper',
+      action: () => {
+        if (onCycleWallpaper) {
+          onCycleWallpaper();
+        }
+      }
     }
   ];
 
   return (
     <div 
-      className="fixed bottom-[14px] left-1/2 -translate-x-1/2 z-40 max-w-[92vw] sm:max-w-none px-4 sm:px-2 py-1 rounded-4xl backdrop-blur-2xl  border border-white/10 shadow-[0_15px_35px_rgba(0,0,0,0.4)] flex items-end gap-3 sm:gap-2 select-none"
+      className="fixed bottom-[14px] left-1/2 -translate-x-1/2 z-40 max-w-[92vw] sm:max-w-none px-4 sm:px-2  rounded-3xl backdrop-blur-2xl  border border-white/10 shadow-[0_15px_35px_rgba(0,0,0,0.4)] flex items-end gap-3 sm:gap-2 select-none"
       onMouseLeave={() => setHoveredIndex(null)}
       id="macos-dock"
     >

@@ -31,7 +31,7 @@ export const MenuBar: React.FC<MenuBarProps> = ({ time, location, activeWindowLa
 
   return (
     <div 
-      className="fixed top-0 left-0 w-full h-[40px] z-50 flex items-center justify-between px-6 selection:bg-cyan-500/30 text-white/90 text-sm font-sans backdrop-blur-xl bg-slate-900/40 border-b border-white/10 shadow-sm"
+      className="fixed top-0 left-0 w-full h-[40px] z-50 flex items-center justify-between px-3 selection:bg-cyan-500/30 text-white/90 text-sm font-sans backdrop-blur-xl  border-b border-white/10 shadow-sm"
       id="macos-menubar"
     >
       {/* Absolute top glare highlight for liquid glass look */}
@@ -58,7 +58,7 @@ export const MenuBar: React.FC<MenuBarProps> = ({ time, location, activeWindowLa
         <span className="hidden md:inline cursor-pointer hover:text-white/100 opacity-75 transition-opacity">View</span>
         <span className="hidden lg:inline cursor-pointer hover:text-white/100 opacity-75 transition-opacity">Go</span>
         <span className="hidden lg:inline cursor-pointer hover:text-white/100 opacity-75 transition-opacity">Window</span>
-        <span className="hidden md:inline cursor-pointer hover:text-white/100 opacity-75 transition-opacity font-medium text-cyan-400">Bio</span>
+        {/* <span className="hidden md:inline cursor-pointer hover:text-white/100 opacity-75 transition-opacity font-medium text-cyan-400">Bio</span> */}
       </div>
 
       {/* Middle section: Username */}
@@ -78,20 +78,20 @@ export const MenuBar: React.FC<MenuBarProps> = ({ time, location, activeWindowLa
 
         {/* Location display */}
         <div className="flex items-center space-x-1 px-2 py-0.5 rounded-full hover:bg-white/10 transition-colors cursor-pointer text-xs" title="Location Info">
-          <MapPin size={12} className="text-cyan-400" />
+          <MapPin size={12} className="text-white" />
           <span>{location.city}, {location.country}</span>
         </div>
 
         {/* Calendar widget */}
-        <div className="hidden md:flex items-center space-x-1.5 cursor-pointer hover:text-cyan-300 transition-colors">
-          <Calendar size={13} className="opacity-75 text-cyan-400" />
-          <span className="text-xs">{formatDate(time)}</span>
+        <div className="hidden md:flex items-center space-x-1.5 text-xs font-thin cursor-pointer  transition-colors">
+          {/* <Calendar size={13} className="opacity-75 text-cyan-400" /> */}
+          <span className="">{formatDate(time)}</span>
+          <span className="">{formatTime(time)}</span>
         </div>
 
         {/* Time widget */}
-        <div className="flex items-center space-x-1 px-2.5 py-0.5 rounded-md bg-white/10 border border-white/5 shadow-inner text-cyan-300 font-mono text-xs font-semibold">
-          <Clock size={12} className="animate-pulse text-cyan-400" />
-          <span>{formatTime(time)}</span>
+        <div className="flex items-center  text-white  text-xs font-normal">
+          {/* <Clock size={12} className="animate-pulse text-cyan-400" /> */}
         </div>
       </div>
     </div>

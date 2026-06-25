@@ -161,7 +161,7 @@ export const DynamicIcon: React.FC<DynamicIconProps> = ({ name, className = '', 
     // macOS Classic Finder Split Face
     return (
       <div 
-        className={`relative flex items-center justify-center rounded-2xl overflow-hidden shadow-md cursor-pointer  ${className}`}
+        className={`relative flex items-center justify-center rounded-2xl overflow-hidden  cursor-pointer  ${className}`}
         style={{ 
           width: size * 2.5, 
           height: size * 2.5,
@@ -285,6 +285,20 @@ export const DynamicIcon: React.FC<DynamicIconProps> = ({ name, className = '', 
 
         <ImageWithSkeleton src="/iconn/camera.png" alt="camera-icon" className="w-full h-full" />
 
+      </div>
+    );
+  }
+
+  if (normName === 'wallpaper') {
+    return (
+      <div 
+        className={`relative flex items-center justify-center rounded-2xl overflow-hidden ${className}`}
+        style={{ 
+          width: size * 2.5, 
+          height: size * 2.5,
+        }}
+      >
+        <ImageWithSkeleton src="/iconn/wallpaper.png" alt="wallpaper-icon" className="w-full h-full object-contain" />
       </div>
     );
   }

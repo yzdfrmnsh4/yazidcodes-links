@@ -14,7 +14,10 @@ import { StickyNote } from './components/StickyNote';
 import { CameraContent } from './components/CameraContent';
 import { Toast } from './components/Toast';
 import { DesktopWidgets } from './components/DesktopWidgets';
+import { LeftWidgets } from './components/LeftWidgets';
+import { RightWidgets } from './components/RightWidgets';
 import DarkVeil from './components/DarkVeil';
+import Grainient from './components/Grainient';
 import ProfileCard from './components/ProfileCard';
 import { AppWindowId, DesktopItem } from './types';
 import { Wallpaper, RefreshCw, LayoutGrid, Info, Camera, Battery, Wifi, SignalHigh } from 'lucide-react';
@@ -107,12 +110,13 @@ export default function App() {
 
   // Wallpaper manager (Choose from presets)
   const wallpapers = [
-    "https://images.pexels.com/photos/1106472/pexels-photo-1106472.jpeg", // Emerald Bay Lake Tahoe (turquoise)
-    "https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg", // Clear reflections
-    "https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg"  // Starry mountains
+    "/spiderr.jpeg", // Clear reflections
+    "/wallpaper.jpg", // Emerald Bay Lake Tahoe (turquoise)
+    "/wallpaper-dark.jpg"  // Starry mountains
   ];
   const [currentWallpaperIdx, setCurrentWallpaperIdx] = useState<number>(0);
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [isWallpaperHovered, setIsWallpaperHovered] = useState<boolean>(false);
 
   // Monitor screen layout context responsively
   useEffect(() => {
@@ -184,10 +188,43 @@ export default function App() {
       className="relative w-screen h-screen overflow-hidden font-sans select-none bg-slate-950"
       id="macos-surface-container"
     >
-      {/* Dynamic Live WebGL Wallpaper using DarkVeil (React Bits + OGL) */}
+      {/* Desktop Background Wallpaper Options (Comment/Uncomment to switch) */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {/* <img src="../foto.jpg" alt="" className="w-screen" /> */}
-        <DarkVeil
+        {/* --- OPTION 1: Static Image Wallpaper (uses the wallpapers array) --- */}
+        <img 
+          src={wallpapers[currentWallpaperIdx]} 
+          alt="Desktop Wallpaper" 
+          className="w-full h-full object-cover" 
+        />
+
+        {/* --- OPTION 2: Live WebGL Gradient (Grainient) --- */}
+        {/* <Grainient
+          color1="#05f8ff"
+          color2="#ffffff"
+          color3="#0ef6ff"
+          timeSpeed={0.25}
+          colorBalance={0.0}
+          warpStrength={1.0}
+          warpFrequency={5.0}
+          warpSpeed={2.0}
+          warpAmplitude={50.0}
+          blendAngle={0.0}
+          blendSoftness={0.05}
+          rotationAmount={500.0}
+          noiseScale={2.0}
+          grainAmount={0.1}
+          grainScale={2.0}
+          grainAnimated={false}
+          contrast={1.5}
+          gamma={1.0}
+          saturation={1.0}
+          centerX={0.0}
+          centerY={0.0}
+          zoom={0.9}
+        /> */}
+
+        {/* --- OPTION 3: Live WebGL Liquid Glass (DarkVeil) --- */}
+        {/* <DarkVeil
           hueShift={currentWallpaperIdx * 120}
           noiseIntensity={0.03}
           scanlineIntensity={0.05}
@@ -195,7 +232,7 @@ export default function App() {
           scanlineFrequency={0.0}
           warpAmount={0.05}
           resolutionScale={0.8}
-        />
+        /> */}
       </div>
 
       {/* Background glass overlay to unify and smooth overall wallpaper depth */}
@@ -249,64 +286,24 @@ export default function App() {
           className="absolute top-[40px] bottom-[110px] left-0 right-0 p-6 flex flex-row items-stretch justify-between gap-6"
           id="desktop-main-grid"
         >
-          {/* Left Area: Desktop Icon Grid with wrapping */}
+          {/* Left Column: Left Widgets (Spiderman Theme) */}
+          <div className="w-[320px] flex flex-col gap-4 shrink-0 overflow-y-auto scrollbar-none pl-1 pb-12 mask-fade-bottom animate-fade-in">
+            <LeftWidgets time={time} />
+          </div>
+
+          {/* Center Area: Empty Spacer for Spiderman Wallpaper */}
           <div
-            className="pl-10 pt-14 flex-1 flex flex-col flex-wrap items-start justify-start gap-x-5 gap-y-7 content-start max-h-96 overflow-auto scrollbar-none selection:bg-cyan-500/20"
+            className="flex-1"
             onClick={(e) => {
               if (e.target === e.currentTarget) {
                 setActiveWindowLabel('Finder');
               }
             }}
-          >
-            {desktopItems.map((item, index) => (
-              <DesktopIcon
-                key={item.id}
-                item={item}
-                index={index}
-              />
-            ))}
+          />
 
-            {/* Floating Settings/Wallpaper control shortcut */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6 }}
-              onClick={cycleWallpaper}
-              className="relative flex flex-col items-center justify-center cursor-pointer select-none group w-20 sm:w-24 h-28 P-2 rounded-xl hover:bg-white/10  active:bg-white/15 border border-transparent hover:border-white/10 text-center"
-              title="Ganti Wallpaper Desktop"
-            >
-              <div className="relative flex items-center justify-center w-11 h-11 sm:w-16 sm:h-16  text-white">
-                {/* <Wallpaper size={20} className="group-hover:rotate-12 transition-transform" /> */}
-                <ImageWithSkeleton src="../iconn/wallpaper.png" className="w-full h-full" alt="" />
-
-              </div>
-              <span className="mt-2 text-[11px] sm:text-xs font-semibold text-white leading-tight text-shadow-md">
-                Ganti Wallpaper
-              </span>
-            </motion.div>
-          </div>
-
-          {/* Right Area: Elegant widgets glass panel */}
-          <div className="w-[325px] flex flex-col gap-4 shrink-0 overflow-y-auto scrollbar-none pr-1 pb-12 mask-fade-bottom">
-            <DesktopWidgets time={time} onTriggerToast={triggerToast} />
-
-            {/* Guide Card panel */}
-            {/* <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2, duration: 0.5 }}
-              className="p-4 rounded-2xl backdrop-blur-2xl bg-slate-900/40 border border-white/10 text-white shadow-xl flex items-start space-x-3"
-            >
-              <div className="w-8 h-8 rounded-full bg-cyan-400/20 text-cyan-300 flex items-center justify-center shrink-0">
-                <Info size={16} className="animate-bounce" />
-              </div>
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-cyan-200">Panduan Tahoe</h4>
-                <p className="text-[10px] text-slate-300 leading-normal mt-0.5">
-                  Tarik window modal pada titlebar untuk memindahkan posisi secara presisi, gunakan tombol Tutup di sisi kanan atau traffic light di kiri.
-                </p>
-              </div>
-            </motion.div> */}
+          {/* Right Column: Right Widgets (Spiderman Theme) */}
+          <div className="w-[320px] flex flex-col gap-4 shrink-0 overflow-y-auto scrollbar-none pr-1 pb-12 mask-fade-bottom animate-fade-in">
+            <RightWidgets time={time} />
           </div>
         </div>
       ) : (
@@ -399,10 +396,10 @@ export default function App() {
               {/* Launcher 1: Phone / WhatsApp Icon */}
               <button
                 onClick={() => {
-                  window.open('https://wa.me/628123456789', '_blank');
+                  window.open('https://wa.me/628818208207', '_blank');
                   triggerToast("💬 Menghubungi Muhammad Yazid di WhatsApp...");
                 }}
-                className="w-[80px] h-[80px] rounded-2xl hover:brightness-110 active:scale-90 transition-transform flex items-center justify-center shadow-lg overflow-hidden"
+                className="w-[80px] h-[80px] rounded-2xl hover:brightness-110  transition-transform flex items-center justify-center  overflow-hidden"
                 title="WhatsApp"
               >
                 <ImageWithSkeleton src="/iconn/iMessage.png" alt="" className="w-full h-full" />
@@ -412,7 +409,7 @@ export default function App() {
               {/* Launcher 2: Safari Web */}
               <button
                 onClick={() => handleOpenWindow('safari')}
-                className="w-[80px] h-[80px] rounded-2xl  flex items-center justify-center hover:brightness-110 active:scale-90 transition-transform shadow-lg overflow-hidden"
+                className="w-[80px] h-[80px] rounded-2xl  flex items-center justify-center hover:brightness-110  transition-transform  overflow-hidden"
                 title="Safari"
               >
                 <ImageWithSkeleton src="/iconn/safari-dark.png" alt="" className="w-full h-full" />
@@ -432,7 +429,7 @@ export default function App() {
               {/* Launcher 4: Photos Gallery */}
               <button
                 onClick={() => handleOpenWindow('photos')}
-                className="w-[80px] h-[80px] rounded-2xl  flex items-center justify-center hover:brightness-95 active:scale-90 transition-transform shadow-lg overflow-hidden relative"
+                className="w-[80px] h-[80px] rounded-2xl  flex items-center justify-center hover:brightness-95  transition-transform  overflow-hidden relative"
                 title="Galeri"
               >
                 <ImageWithSkeleton src="/iconn/photos.png" alt="" className="w-full h-full" />
@@ -445,7 +442,7 @@ export default function App() {
                   triggerToast("📷 Membuka Photo Booth...");
                   handleOpenWindow('camera');
                 }}
-                className="w-[80px] h-[80px] rounded-2xl  flex items-center justify-center hover:brightness-110 active:scale-90 transition-transform shadow-lg relative overflow-hidden"
+                className="w-[80px] h-[80px] rounded-2xl  flex items-center justify-center hover:brightness-110 active:scale-90 transition-transform  relative overflow-hidden"
                 title="Kamera"
               >
                 {/* <Camera size={18} className="text-cyan-400" /> */}
@@ -565,6 +562,7 @@ export default function App() {
           onOpenWindow={handleOpenWindow}
           openWindows={openWindows}
           onTriggerToast={triggerToast}
+          onCycleWallpaper={cycleWallpaper}
         />
       )}
     </div>

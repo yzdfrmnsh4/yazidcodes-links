@@ -32,7 +32,7 @@ export const DesktopWidgets: React.FC<DesktopWidgetsProps> = ({ time, onTriggerT
     const days = [5, 6, 7, 8, 9, 10, 11, 12, 13];
     const currentNum = parseInt(dayNum);
     return (
-      <div className="grid grid-cols-7 gap-1.5 mt-2.5 text-[10px] font-mono text-slate-300">
+      <div className="grid grid-cols-7 gap-1.5 mt-2.5 text-[10px] font-mono text-slate-300 ">
         {['S', 'S', 'R', 'K', 'J', 'S', 'M'].map((d, idx) => (
           <div key={idx} className="text-center font-bold text-slate-500 text-[8px]">{d}</div>
         ))}
