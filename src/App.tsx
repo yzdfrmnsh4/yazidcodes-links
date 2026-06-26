@@ -321,7 +321,7 @@ export default function App() {
             </div>
 
             {/* iOS App Icon Grid */}
-            <div className="grid grid-cols-4 gap-x-2 gap-y-4 px-0  mt-1 mb-4 justify-between items-center  w-full max-w-[420px] mx-auto">
+            <div className="grid grid-cols-4 gap-x-2 gap-y-4 px-0  mt-1 mb-7 justify-between items-center  w-full max-w-[420px] mx-auto">
               {desktopItems.map((item, index) => (
                 <motion.div
                   key={item.id}
@@ -392,7 +392,7 @@ export default function App() {
 
           {/* iOS Translucent Glass Bottom Dock (Holding WA, Safari, Spotify, Photos, Camera) */}
           <div className="absolute bottom-6 left-0 right-0 z-20 px-4 shrink-0 ">
-            <div className="mx-auto w-full max-w-[420px] h-[78px] rounded-[20px] backdrop-blur-2xl  border border-white/10 shadow-[0_20px_45px_rgba(0,0,0,0.4)] flex items-center justify-between px-2 py-2 mb-10">
+            <div className="mx-auto w-full max-w-[420px] h-[78px] rounded-[20px] backdrop-blur-2xl  border border-white/10 shadow-[0_20px_45px_rgba(0,0,0,0.4)] flex items-center justify-between px-2 py-2 mb-14">
               {/* Launcher 1: Phone / WhatsApp Icon */}
               <button
                 onClick={() => {
