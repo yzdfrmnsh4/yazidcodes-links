@@ -321,7 +321,7 @@ export default function App() {
             </div>
 
             {/* iOS App Icon Grid */}
-            <div className="grid grid-cols-4 gap-x-2 gap-y-4 px-0  mt-1 justify-between items-center  w-full max-w-[420px] mx-auto">
+            <div className="grid grid-cols-4 gap-x-2 gap-y-4 px-0  mt-1 mb-4 justify-between items-center  w-full max-w-[420px] mx-auto">
               {desktopItems.map((item, index) => (
                 <motion.div
                   key={item.id}
@@ -331,7 +331,7 @@ export default function App() {
                   onClick={() => {
                     window.open(item.url, '_blank', 'noreferrer,noopener');
                   }}
-                  className="flex flex-col items-center justify-center cursor-pointer select-none active:opacity-70 "
+                  className="flex flex-col items-center justify-center cursor-pointer select-none active:opacity-70  "
                 >
                   <div className="w-[76px] h-[76px] rounded-2xl  flex items-center justify-center relative backdrop-blur-xl">
                     {/* <span className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent rounded-2xl" /> */}
@@ -391,8 +391,8 @@ export default function App() {
           </div>
 
           {/* iOS Translucent Glass Bottom Dock (Holding WA, Safari, Spotify, Photos, Camera) */}
-          <div className="absolute bottom-6 left-0 right-0 z-20 px-4 shrink-0">
-            <div className="mx-auto w-full max-w-[420px] h-[78px] rounded-[20px] backdrop-blur-2xl  border border-white/10 shadow-[0_20px_45px_rgba(0,0,0,0.4)] flex items-center justify-between px-2 py-2">
+          <div className="absolute bottom-6 left-0 right-0 z-20 px-4 shrink-0 ">
+            <div className="mx-auto w-full max-w-[420px] h-[78px] rounded-[20px] backdrop-blur-2xl  border border-white/10 shadow-[0_20px_45px_rgba(0,0,0,0.4)] flex items-center justify-between px-2 py-2 mb-10">
               {/* Launcher 1: Phone / WhatsApp Icon */}
               <button
                 onClick={() => {
